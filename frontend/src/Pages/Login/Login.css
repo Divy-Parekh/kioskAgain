@@ -1,0 +1,90 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f4e3; /* Light, creamy background */
+  font-family: Arial, sans-serif;
+}
+
+.login-form {
+  background: #f2e8d9; /* Slightly darker cream for the form */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c8a773; /* A soft brown border */
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #8b5a2e; /* A rich, earthy brown */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #6e4722; /* A deeper brown on hover */
+}
+
+.error-message {
+  color: #c44933; /* A complementary reddish-brown */
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 60px;
+  box-sizing: border-box;
+}
+
+.show-password-btn {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8b5a2e; /* Matches the button color */
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+}

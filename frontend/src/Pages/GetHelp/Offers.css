@@ -1,0 +1,63 @@
+/* Container */
+.offers-container {
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sorting dropdown */
+.offers-container label {
+  font-weight: 600;
+  margin-right: 8px;
+  color: #333;
+}
+
+.offers-container select {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: border 0.2s ease;
+}
+
+.offers-container select:focus {
+  border: 1px solid #007bff;
+  outline: none;
+}
+
+/* Cards grid */
+.liquor-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Individual card */
+.liquor-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.liquor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Card content */
+.liquor-card h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.liquor-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
