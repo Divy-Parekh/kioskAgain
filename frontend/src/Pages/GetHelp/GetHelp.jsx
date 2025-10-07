@@ -24,21 +24,21 @@ function GetHelp() {
   const recognitionRef = useRef(null);
 
   const options = [
+    // {
+    //   label: "Find Products",
+    //   endpoint: "/userreply",
+    //   icon: "/symbols/findproducts.svg",
+    // },
     {
-      label: "Find Products",
-      endpoint: "/userreply",
-      icon: "/symbols/findproducts.svg",
-    },
-    {
-      label: "Liquor Information",
+      label: "Liquor University",
       endpoint: "/info-gemini",
       icon: "/symbols/info_40dp_FAF0E6_FILL0_wght400_GRAD0_opsz40.svg",
     },
-    {
-      label: "Offers",
-      endpoint: "/getoffers",
-      icon: "/symbols/sell_40dp_FAF0E6_FILL0_wght400_GRAD0_opsz40.svg",
-    },
+    // {
+    //   label: "Offers",
+    //   endpoint: "/getoffers",
+    //   icon: "/symbols/sell_40dp_FAF0E6_FILL0_wght400_GRAD0_opsz40.svg",
+    // },
     {
       label: "Recipes",
       endpoint: "/suggest",
@@ -48,12 +48,7 @@ function GetHelp() {
 
   // Intro greeting
   useEffect(() => {
-    const intro = `Welcome! I’m here to help you with:
-    First. Finding liquor products,
-    Second. Learning about different types of liquor,
-    Third. Viewing current offers, or
-    Fourth. getting personalized suggestions.
-    Please choose an option to begin!`;
+    const intro = `Welcome!`;
 
     playAvatarResponse(intro).then(() => setIsGreeting(false));
   }, []);
@@ -184,7 +179,7 @@ function GetHelp() {
   };
 
   const handleSpeakAgain = () => {
-    playAvatarResponse("Sure, I'm listening. What would you like to know?");
+    // playAvatarResponse("Sure, I'm listening. What would you like to know?");
     startListening(
       options.find((o) => o.label === selectedOption)?.endpoint || "/userreply"
     );
@@ -554,3 +549,4 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
