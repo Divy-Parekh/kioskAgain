@@ -89,7 +89,7 @@ function GetHelp() {
           ? "Which liquor would you like to know about?"
           : "Tell me what recipe you are looking for.";
 
-      await playAvatarResponse(`You selected ${option.label}. ${prompt}`);
+      await playAvatarResponse(`${prompt}`);
       setTimeout(() => startListening(option.endpoint), 500);
     }
   };
@@ -549,4 +549,5 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
