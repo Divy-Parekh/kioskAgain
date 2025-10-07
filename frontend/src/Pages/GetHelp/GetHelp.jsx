@@ -50,7 +50,8 @@ function GetHelp() {
   useEffect(() => {
     const intro = `Welcome! Click on options to get started.`;
 
-    playAvatarResponse(intro).then(() => setIsGreeting(false));
+    // playAvatarResponse(intro).then(() => setIsGreeting(false));
+    playAvatarResponse(intro);
   }, []);
 
   // Play avatar TTS response and update store
@@ -549,6 +550,7 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
 
