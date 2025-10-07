@@ -14,11 +14,15 @@ router.post("/suggest", async (req, res) => {
     const recipe = await getCocktailRecipe(text);
 
     // Step 2: Build reply message (short)
+    // const replyText = `Here’s a quick recipe for ${
+    //   recipe.drink
+    // }: ${recipe.ingredients
+    //   .map((ing) => `${ing.amount} ${ing.item}`)
+    //   .join(", ")}. Steps: ${recipe.instructions.join(" ")}.`;
     const replyText = `Here’s a quick recipe for ${
       recipe.drink
-    }: ${recipe.ingredients
-      .map((ing) => `${ing.amount} ${ing.item}`)
-      .join(", ")}. Steps: ${recipe.instructions.join(" ")}.`;
+    }`;
+    
 
     // Step 3: Generate audio + viseme data
     const { visemes, audio } = await synthesizeSpeech(replyText);
