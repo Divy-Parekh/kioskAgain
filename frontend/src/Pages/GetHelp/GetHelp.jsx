@@ -17,7 +17,7 @@ function GetHelp() {
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [showSpeakAgain, setShowSpeakAgain] = useState(false);
-  const [isGreeting, setIsGreeting] = useState(true);
+  // const [isGreeting, setIsGreeting] = useState(true);
 
   const { setAvatarData } = useAvatarStore();
   const navigate = useNavigate();
@@ -550,6 +550,7 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
 
