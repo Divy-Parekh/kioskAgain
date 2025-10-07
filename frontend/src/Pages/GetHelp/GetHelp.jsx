@@ -243,7 +243,7 @@ function GetHelp() {
                   key={opt.label}
                   onClick={() => handleOptionClick(opt)}
                   className="option-button"
-                  disabled={isGreeting}
+                  {/* disabled={isGreeting} */}
                 >
                   <div className="svg-container-option">
                     <img
@@ -550,6 +550,7 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
 
