@@ -85,7 +85,7 @@ function GetHelp() {
       const prompt =
         option.label === "Find Products"
           ? "What product are you looking for?"
-          : option.label === "Liquor Information"
+          : option.label === "Liquor University"
           ? "Which liquor would you like to know about?"
           : "Tell me what recipe you are looking for.";
 
@@ -549,5 +549,6 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
