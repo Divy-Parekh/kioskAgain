@@ -60,19 +60,20 @@ const router = express.Router();
 
 // Helper: Create liquor info message (works with Gemini JSON too)
 function createLiquorInfoMessage(liquor) {
-  const parts = [
-    `Name: ${liquor.Name}`,
-    `Type: ${liquor.Type}`,
-    liquor.Alcohol_Content
-      ? `Alcohol Content: ${liquor.Alcohol_Content}`
-      : null,
-    liquor.Country ? `Country: ${liquor.Country}` : null,
-    liquor.Flavor ? `Flavor: ${liquor.Flavor}` : null,
-    liquor.Age ? `Age: ${liquor.Age}` : null,
-    liquor.Best_For ? `Best For: ${liquor.Best_For}` : null,
-  ].filter(Boolean);
+  // const parts = [
+  //   `Name: ${liquor.Name}`,
+  //   `Type: ${liquor.Type}`,
+  //   liquor.Alcohol_Content
+  //     ? `Alcohol Content: ${liquor.Alcohol_Content}`
+  //     : null,
+  //   liquor.Country ? `Country: ${liquor.Country}` : null,
+  //   liquor.Flavor ? `Flavor: ${liquor.Flavor}` : null,
+  //   liquor.Age ? `Age: ${liquor.Age}` : null,
+  //   liquor.Best_For ? `Best For: ${liquor.Best_For}` : null,
+  // ].filter(Boolean);
 
-  return parts.join(". ") + ".";
+  // return parts.join(". ") + ".";
+  return `Information for ${liquor.Name}`;
 }
 
 // 🔥 New Gemini-powered info route
