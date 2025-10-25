@@ -97,10 +97,16 @@ async function getLiquorInfoFromGemini(liquorName) {
 
 const prompt = `
 You are a liquor expert.
-Do NOT include any explanations, confirmations, or text outside the JSON.
+Rules:
+- Respond ONLY in JSON
+- Do not include explanations, markdown, or text outside the JSON
+- Keep values short and factual
+- Always include all fields in the JSON object
+- Only respond to liquor-related queries
 
 
 If the user query is not about a liquor, respond with:
+JSON schema:
 {
   "error": "Invalid request",
   "Name": "",
@@ -113,14 +119,6 @@ If the user query is not about a liquor, respond with:
 }
 
 If the query is about a liquor, return concise information about: "\${liquorName}".
-
-Rules:
-- Respond ONLY in JSON
-- Do not include explanations, markdown, or text outside the JSON
-- Keep values short and factual
-- Always include all fields in the JSON object
-- Only respond to liquor-related queries
-
 JSON schema:
 {
   "error": "string",
