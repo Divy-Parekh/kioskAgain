@@ -56,8 +56,11 @@ async function getCocktailRecipe(drinkName) {
 
   const prompt = `
 You are a professional mixologist.
-If the user query is not about a cocktail or drink, respond with:
+If the user query is not about a cocktail or drink, respond with a JSON object containing all fields with empty values and an "error" field like this:
 {
+  "drink": "",
+  "ingredients": [],
+  "instructions": [],
   "error": "Invalid request"
 }
 Else
@@ -95,12 +98,19 @@ Output strictly in JSON format with:
 async function getLiquorInfoFromGemini(liquorName) {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-  const prompt = `
+const prompt = `
 You are a liquor expert.
 
 If the user query is not about a liquor, respond with:
 {
-  "error": "Invalid request"
+  "error": "Invalid request",
+  "Name": "",
+  "Type": "",
+  "Alcohol_Content": "",
+  "Country": "",
+  "Flavor": "",
+  "Age": "",
+  "Best_For": ""
 }
 
 If the query is about a liquor, return concise information about: "\${liquorName}".
@@ -109,10 +119,12 @@ Rules:
 - Respond ONLY in JSON
 - Do not include explanations, markdown, or text outside the JSON
 - Keep values short and factual
+- Always include all fields in the JSON object
 - Only respond to liquor-related queries
 
 JSON schema:
 {
+  "error": "string",
   "Name": "string",
   "Type": "string",
   "Alcohol_Content": "string",
