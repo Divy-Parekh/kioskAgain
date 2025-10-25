@@ -118,7 +118,7 @@ JSON schema:
   "Best_For": ""
 }
 
-If the query is about a liquor, return concise information about: "\${liquorName}".
+If the query is about a liquor, return concise information about: "${liquorName}".
 JSON schema:
 {
   "error": "string",
