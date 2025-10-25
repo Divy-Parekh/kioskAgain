@@ -97,6 +97,8 @@ async function getLiquorInfoFromGemini(liquorName) {
 
 const prompt = `
 You are a liquor expert.
+Do NOT include any explanations, confirmations, or text outside the JSON.
+
 
 If the user query is not about a liquor, respond with:
 {
