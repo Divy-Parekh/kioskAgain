@@ -67,17 +67,14 @@ Else
 Provide a short recipe for the cocktail: "${drinkName}".
 Output strictly in JSON format with:
 {
-  "drink": "Mango Margarita",
+  "drink": "drink name",
   "ingredients": [
-    { "item": "Tequila", "amount": "2 oz" },
-    { "item": "Mango puree", "amount": "1.5 oz" },
-    { "item": "Lime juice", "amount": "1 oz" },
-    { "item": "Triple Sec", "amount": "0.5 oz" }
+    { "item": "item name", "amount": "in oz" },
+    { "item": "item name", "amount": "in oz" },
   ],
   "instructions": [
-    "Add all ingredients into a shaker with ice",
-    "Shake well and strain into a glass",
-    "Garnish with lime or mango slice"
+    "instruction one",
+    "instruction two"
   ]
 }
 `;
