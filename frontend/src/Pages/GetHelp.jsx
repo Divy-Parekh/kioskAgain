@@ -94,7 +94,7 @@ function GetHelp() {
       );
       setTimeout(startListening(endpoint), 800); // Start listening after brief pause
     } else if (option.label === "Liquor Information") {
-      endpoint = "/info";
+      endpoint = "/info-gemini";
 
       await playAvatarResponse(
         `You selected ${option.label}. What product do you want to know about?`
@@ -407,3 +407,4 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
