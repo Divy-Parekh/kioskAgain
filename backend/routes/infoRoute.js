@@ -113,34 +113,7 @@ const { getLiquorInfoFromGemini } = require("../services/geminiClient");
 
 const router = express.Router();
 
-// 🧠 Liquor expert prompt
-const prompt = `
-You are a liquor expert.
 
-If the user query is not about a liquor, respond with:
-{
-  "error": "Invalid request"
-}
-
-If the query is about a liquor, return concise information about: "\${liquorName}".
-
-Rules:
-- Respond ONLY in JSON
-- Do not include explanations, markdown, or text outside the JSON
-- Keep values short and factual
-- Only respond to liquor-related queries
-
-JSON schema:
-{
-  "Name": "string",
-  "Type": "string",
-  "Alcohol_Content": "string",
-  "Country": "string",
-  "Flavor": "string",
-  "Age": "string",
-  "Best_For": "string"
-}
-`;
 
 // Helper: Create liquor info message (works with Gemini JSON too)
 function createLiquorInfoMessage(liquor) {
@@ -169,7 +142,7 @@ router.post("/info-gemini", async (req, res) => {
 
   try {
     // Step 1: Query Gemini for liquor info using the updated prompt
-    const liquor = await getLiquorInfoFromGemini(name, prompt);
+    const liquor = await getLiquorInfoFromGemini(name);
 
     // Step 2: Handle invalid (non-liquor) queries
     if (liquor.error === "Invalid request") {
