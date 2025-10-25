@@ -19,9 +19,17 @@ router.post("/suggest", async (req, res) => {
     // }: ${recipe.ingredients
     //   .map((ing) => `${ing.amount} ${ing.item}`)
     //   .join(", ")}. Steps: ${recipe.instructions.join(" ")}.`;
-    const replyText = `Here’s a quick recipe for ${
+    
+    let replyText;
+    if(recipe.error){
+      replyText = "Invalid Request.Ask about any Drink or Mocktail."
+    }
+    else{
+      
+    replyText = `Here’s a quick recipe for ${
       recipe.drink
     }`;
+    }
     
 
     // Step 3: Generate audio + viseme data
