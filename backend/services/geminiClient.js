@@ -56,6 +56,11 @@ async function getCocktailRecipe(drinkName) {
 
   const prompt = `
 You are a professional mixologist.
+If the user query is not about a cocktail or drink, respond with:
+{
+  "error": "Invalid request"
+}
+Else
 Provide a short recipe for the cocktail: "${drinkName}".
 Output strictly in JSON format with:
 {
