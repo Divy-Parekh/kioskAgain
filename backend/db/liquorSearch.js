@@ -1,5 +1,4 @@
 const { createClient } = require("@libsql/client");
-const levenshtein = require("fast-levenshtein");
 require("dotenv").config();
 
 const client = createClient({
@@ -18,6 +17,31 @@ function normalize(str) {
 }
 
 /**
+ * Simple Levenshtein distance implementation
+ */
+function levenshtein(a, b) {
+  const matrix = Array.from({ length: b.length + 1 }, (_, i) =>
+    Array(a.length + 1).fill(0)
+  );
+
+  for (let i = 0; i <= b.length; i++) matrix[i][0] = i;
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      const cost = a[j - 1] === b[i - 1] ? 0 : 1;
+      matrix[i][j] = Math.min(
+        matrix[i - 1][j] + 1, // deletion
+        matrix[i][j - 1] + 1, // insertion
+        matrix[i - 1][j - 1] + cost // substitution
+      );
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+/**
  * Search for liquors by name or type with fuzzy tolerance
  * Handles minor speech-to-text errors (e.g., "mago" for "mango")
  * @param {string[]} terms - list of search terms (liquor names or types)
@@ -28,7 +52,7 @@ async function findLiquors(terms) {
 
   const lowerTerms = terms.map((t) => normalize(t));
 
-  // Step 1: Fetch all liquors once (assuming reasonable table size)
+  // Step 1: Fetch all liquors once
   const allLiquors = await client.execute("SELECT * FROM Liquor_Master");
   const rows = allLiquors.rows || [];
 
@@ -42,9 +66,7 @@ async function findLiquors(terms) {
       if (name.includes(term) || category.includes(term)) return true;
 
       // Levenshtein distance tolerance (1–2 edits allowed)
-      const nameDistance = levenshtein.get(name, term);
-      const categoryDistance = levenshtein.get(category, term);
-      return nameDistance <= 2 || categoryDistance <= 2;
+      return levenshtein(name, term) <= 2 || levenshtein(category, term) <= 2;
     });
   });
 
