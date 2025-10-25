@@ -302,61 +302,81 @@ function GetHelp() {
               )}
 
               {/* Liquor Info */}
-              {liquorInfo && (
-                <div className="liquor-info">
-                  <h3>{liquorInfo.Name}</h3>
-                  <p>
-                    <strong>Type:</strong> {liquorInfo.Type}
-                  </p>
-                  <p>
-                    <strong>Alcohol Content:</strong>{" "}
-                    {liquorInfo.Alcohol_Content}
-                  </p>
-                  {liquorInfo.Country && (
-                    <p>
-                      <strong>Country:</strong> {liquorInfo.Country}
-                    </p>
-                  )}
-                  {liquorInfo.Flavor && (
-                    <p>
-                      <strong>Flavor:</strong> {liquorInfo.Flavor}
-                    </p>
-                  )}
-                  {liquorInfo.Age && (
-                    <p>
-                      <strong>Age:</strong> {liquorInfo.Age}
-                    </p>
-                  )}
-                  {liquorInfo.Best_For && (
-                    <p>
-                      <strong>Best For:</strong> {liquorInfo.Best_For}
-                    </p>
-                  )}
-                </div>
-              )}
+{liquorInfo && (
+  <div className="liquor-info">
+    {liquorInfo.error && liquorInfo.error !== "" ? (
+      <p className="text-red-600 font-semibold">
+        {liquorInfo.error || "Invalid request. Please ask about a liquor."}
+      </p>
+    ) : (
+      <>
+        <h3>{liquorInfo.Name || "Unknown Liquor"}</h3>
+        <p>
+          <strong>Type:</strong> {liquorInfo.Type || "N/A"}
+        </p>
+        <p>
+          <strong>Alcohol Content:</strong>{" "}
+          {liquorInfo.Alcohol_Content || "N/A"}
+        </p>
+        <p>
+          <strong>Country:</strong> {liquorInfo.Country || "N/A"}
+        </p>
+        <p>
+          <strong>Flavor:</strong> {liquorInfo.Flavor || "N/A"}
+        </p>
+        <p>
+          <strong>Age:</strong> {liquorInfo.Age || "N/A"}
+        </p>
+        <p>
+          <strong>Best For:</strong> {liquorInfo.Best_For || "N/A"}
+        </p>
+      </>
+    )}
+  </div>
+)}
+
 
               {/* Recipe */}
-              {recipe && (
-                <div className="recipe-card">
-                  <h3>Recipe: {recipe.drink}</h3>
-                  <h4>Ingredients</h4>
-                  <ul>
-                    {recipe.ingredients.map((ing, idx) => (
-                      <li key={idx}>
-                        {idx + 1}. {ing.amount} {ing.item}
-                      </li>
-                    ))}
-                  </ul>
-                  <h4>Instructions</h4>
-                  <ol>
-                    {recipe.instructions.map((step, idx) => (
-                      <li key={idx}>
-                        {idx + 1}. {step}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              )}
+{recipe && (
+  <div className="recipe-card">
+    {recipe.error && recipe.error !== "" ? (
+      <p className="text-red-600 font-semibold">
+        {recipe.error || "Invalid request. Please ask about a cocktail or drink."}
+      </p>
+    ) : (
+      <>
+        <h3>Recipe: {recipe.drink || "Unknown Drink"}</h3>
+
+        <h4>Ingredients</h4>
+        <ul>
+          {recipe.ingredients && recipe.ingredients.length > 0 ? (
+            recipe.ingredients.map((ing, idx) => (
+              <li key={idx}>
+                {idx + 1}. {ing.amount || "N/A"} {ing.item || "N/A"}
+              </li>
+            ))
+          ) : (
+            <li>No ingredients available</li>
+          )}
+        </ul>
+
+        <h4>Instructions</h4>
+        <ol>
+          {recipe.instructions && recipe.instructions.length > 0 ? (
+            recipe.instructions.map((step, idx) => (
+              <li key={idx}>
+                {idx + 1}. {step || "N/A"}
+              </li>
+            ))
+          ) : (
+            <li>No instructions available</li>
+          )}
+        </ol>
+      </>
+    )}
+  </div>
+)}
+
 
               {/* Offers in Table Format */}
               {selectedOption === "Offers" && offers.length > 0 && (
@@ -550,6 +570,7 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
 
