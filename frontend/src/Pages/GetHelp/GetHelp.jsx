@@ -24,11 +24,11 @@ function GetHelp() {
   const recognitionRef = useRef(null);
 
   const options = [
-    // {
-    //   label: "Find Products",
-    //   endpoint: "/userreply",
-    //   icon: "/symbols/findproducts.svg",
-    // },
+    {
+      label: "Find Products",
+      endpoint: "/userreply",
+      icon: "/symbols/findproducts.svg",
+    },
     {
       label: "Liquor University",
       endpoint: "/info-gemini",
@@ -550,6 +550,7 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
 
