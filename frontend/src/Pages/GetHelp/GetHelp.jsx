@@ -57,7 +57,7 @@ function GetHelp() {
   // Play avatar TTS response and update store
   const playAvatarResponse = async (text) => {
     try {
-      const res = await fetch("https://kioskagain.onrender.com/texttospeech", {
+      const res = await fetch("https://kiosk-again-oox1.vercel.app/texttospeech", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text }),
@@ -99,7 +99,7 @@ function GetHelp() {
   const fetchOffers = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("https://kioskagain.onrender.com/getoffers");
+      const res = await fetch("https://kiosk-again-oox1.vercel.app/getoffers");
       const data = await res.json();
       setOffers(data || []);
       setScriptText("Here are the current offers:");
@@ -155,7 +155,7 @@ function GetHelp() {
   const sendUserQuery = async (text, endpoint) => {
     setIsLoading(true);
     try {
-      const res = await fetch(`https://kioskagain.onrender.com${endpoint}`, {
+      const res = await fetch(`https://kiosk-again-oox1.vercel.app${endpoint}`, {
         method: endpoint === "/getoffers" ? "GET" : "POST",
         headers: { "Content-Type": "application/json" },
         body:
@@ -570,6 +570,7 @@ export default GetHelp;
 //       setIsLoading(false);
 //     }
 //   };
+
 
 
 
